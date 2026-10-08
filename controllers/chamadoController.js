@@ -6,9 +6,8 @@ function criar(req, res){
     const chamado = chamadoService.criar(req.body);
     return res.status(201).json(chamado);
     }catch(error){
-        res.status(404).json(error.message)
+        res.status(404).json({mensagem:error.message})
     }
-    
 }
 
 module.exports = { criar }

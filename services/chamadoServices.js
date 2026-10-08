@@ -6,6 +6,7 @@ function criar(dados){
         id: 1,
         titulo: dados.titulo,
         prioridade:dados.prioridade,
+        especialidade:dados.especialidade,
         status:"aberto" 
     }
 
