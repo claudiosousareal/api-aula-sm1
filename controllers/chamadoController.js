@@ -10,4 +10,27 @@ function criar(req, res){
     }
 }
 
-module.exports = { criar }
+function listar(req, res){
+    const chamados = chamadoService.listar();
+    res.status(200).json(chamados);
+}
+
+function buscarPorId(req, res){
+    
+    const chamado = chamadoService.buscarPorId(req.body.id);
+
+    if(!id){
+        return res.status(404).json({
+            erro:"Chamado não encontrado!"
+        })
+    }
+
+    return res.status(200).json(chamado);
+}
+
+
+module.exports = { 
+    criar,
+    listar,
+    buscarPorId
+ }

@@ -1,4 +1,5 @@
 const { suporteN1 } = require('../handlers/suporteHandler')
+const chamadoRepository = require('../repositories/clamadoRepository');
 
 function criar(dados){
     console.log("2 - SERVICE recebeu", dados);
@@ -12,9 +13,23 @@ function criar(dados){
 
     chamado.responsavel = suporteN1(chamado);
 
-    console.log("3 - SERVICE criou", chamado);
+    const chamadoSalvo = chamadoRepository.salvar(chamado)
 
-    return chamado
+    console.log("3 - SERVICE salvou", chamadoSalvo);
+
+    return chamadoSalvo
 }
 
-module.exports = { criar };
+function listar(){
+    return chamadoRepository.listar();
+}
+
+function buscarPorId(id){
+    return chamadoRepository.buscarPorId(id);
+}
+
+module.exports = { 
+    criar,
+    listar,
+    buscarPorId
+ };
